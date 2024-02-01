@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('collection.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
             <div class="input-group mb-3">
@@ -32,7 +32,23 @@
                 <input type="file" name="image" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 
             </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Цена</label>
+                <input type="text" name="price" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Рейтинг товара</label>
+                <select name="rating" class="custom-select" id="inputGroupSelect01">
+                    <option value="0">1</option>
+                    <option value="1">2</option>
+                    <option value="2">3</option>
+                    <option value="3">4</option>
+                    <option value="4">5</option>
+
+                </select>
+
+            </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Статус</label>

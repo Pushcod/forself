@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <a href="{{ route('product.create') }}" class="btn btn-primary">Новые Товар</a>
+        <a href="{{ route('collection.create') }}" class="btn btn-primary">Новые Товар</a>
     </div>
     <div class="row">
         <table class="table">
@@ -11,7 +11,8 @@
                 <th scope="col">#</th>
                 <th scope="col">Название поста</th>
                 <th scope="col">Описание поста</th>
-                <th scope="col">Действие</th>
+                <th scope="col">Рейтинг</th>
+                <th scope="col">Цена</th>
                 <th scope="col">Изображение</th>
             </tr>
             </thead>
@@ -22,29 +23,32 @@
                 <td></td>
             </tr>
             </tbody>
-            @forelse($products as $product)
+            @forelse($collections as $collection)
                 <tr>
                     <th scope="row">
-                        {{ $product->id }}
+                        {{ $collection->id }}
                     </th>
                     <td>
-                        {{ $product->name }}
+                        {{ $collection->name }}
                     </td>
                     <td>
-                        {{ $product->text }}
+                        {{ $collection->text }}
                     </td>
                     <td>
-                        {{ $product->reviews }}
+                        {{ $collection->rating }}
                     </td>
                     <td>
-                        {{ $product->category->name }}
+                        {{ $collection->price }}
                     </td>
                     <td>
-                        <img width="150" height="150" src="/images/products/{{$product->image}}">
+                        {{ $collection->category->name }}
+                    </td>
+                    <td>
+                        <img width="150" height="150" src="/images/collections/{{$collection->image}}">
                     </td>
 
                     <td>
-                        @if($product->is_active == 0)
+                        @if($collection->is_active == 0)
                             <div class="alert alert-danger text-center">
                                 {{ __('Не активна') }}
                             </div>
@@ -56,10 +60,10 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('product.edit', $product->id)}}" class="btn btn-success">{{ __('Редактировать') }}</a>
-                        <a href="{{route('product.show', $product->id)}}" class="btn btn-warning">Подробнее</a>
+                        <a href="{{route('product.edit', $collection->id)}}" class="btn btn-success">{{ __('Редактировать') }}</a>
+                        <a href="{{route('product.show', $collection->id)}}" class="btn btn-warning">Подробнее</a>
 
-                        <form method="POST" action="{{route('product.delete', $product->id)}}">
+                        <form method="POST" action="{{route('collection.delete', $collection->id)}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Удалить</button>

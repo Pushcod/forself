@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$product->name}}</h5>
                     <p class="card-text">{{$product->text}}</p>
-                    <a href="{{route('product', $product->id)}}" class="btn btn-primary">{{__('Перейти')}}</a>
+                    <a href="{{route('products', $product->id)}}" class="btn btn-primary">{{__('Перейти')}}</a>
                 </div>
             </div>
         @empty

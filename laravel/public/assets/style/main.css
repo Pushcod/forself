@@ -7,10 +7,15 @@
 .menu-link{
     text-decoration: none;
     color: white;
-
+    cursor: pointer;
+    transition: all .4s;
+    &:hover{
+        font-size: 20px;
+        color: #53c5ec;
+    }
 }
 .menu-item{
     padding: 10px;
-    background: #1a202c;
-    border-radius: 5px;
+
+
 }

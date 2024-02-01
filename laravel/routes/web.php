@@ -18,6 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/category', [\App\Http\Controllers\CategoryController::class, 'category'])->name('category');
+Route::get('/products/{id}', [\App\Http\Controllers\CategoryController::class, 'products'])->name('products');
+Route::get('/collections/{id}', [\App\Http\Controllers\CategoryController::class, 'collections'])->name('collections');
+Route::get('/single-collection/{id}', [\App\Http\Controllers\CategoryController::class, 'collection'])->name('collection');
 
 Route::prefix('/category')->group(function () {
     Route::get('/index', [\App\Http\Controllers\CategoryController::class, 'index'])->name('category.index');
@@ -35,4 +38,13 @@ Route::prefix('/product')->group(function () {
     Route::post('/store', [\App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
     Route::put('/update/{product}', [\App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
     Route::delete('/delete/{product}',[\App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
+});
+
+Route::prefix('/collection')->group(function () {
+    Route::get('/index', [\App\Http\Controllers\CollectionController::class, 'index'])->name('collection.index');
+    Route::get('/create', [\App\Http\Controllers\CollectionController::class, 'create'])->name('collection.create');
+    Route::get('/edit/{collection}', [\App\Http\Controllers\CollectionController::class, 'edit'])->name('collection.edit');
+    Route::get('/show/{collection}', [\App\Http\Controllers\CollectionController::class, 'show'])->name('collection.show');
+    Route::post('/store', [\App\Http\Controllers\CollectionController::class, 'store'])->name('collection.store');
+    Route::delete('/delete/{collection}',[\App\Http\Controllers\CollectionController::class, 'destroy'])->name('collection.delete');
 });

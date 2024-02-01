@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Collection;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,16 @@ class CategoryController extends Controller
     public function products($id){
         $products = Product::where('category_id', $id)->where('is_active', 1)->get();
         return view('product', compact('products'));
+    }
+
+    public function collections($id){
+        $collections = Collection::where('category_id', $id)->where('is_active', 1)->get();
+        return view('collections', compact('collections'));
+    }
+
+    public function collection($id){
+        $collection = Collection::where('id', $id)->where('is_active', 1)->first();
+        return view('single-collection', compact('collection'));
     }
 
     public function product($id){
